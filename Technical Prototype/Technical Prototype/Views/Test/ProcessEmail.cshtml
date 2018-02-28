@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var email = Request["email"];
+    var message = Request["message"];
+    var errorMessage = "";
+    var debuggingFlag = false;
+    try
+    {
+        // Initialize WebMail helper
+        WebMail.SmtpServer = "smtp-mail.outlook.com";
+        WebMail.SmtpPort = 587;
+        WebMail.UserName = "comparestreamapp";
+        WebMail.Password = "cs451project";
+        WebMail.From = "comparestreamapp@outlook.com";
+
+        // Send email
+        WebMail.Send(to: email,
+            subject: "email from comparestream",
+            body: message
+        );
+    }
+    catch (Exception ex)
+    {
+        errorMessage = ex.Message;
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request for Assistance</title>
+</head>
+<body>
+    <p>Sorry to hear that you are having trouble, <b>@email</b>.</p>
+    @if (errorMessage == "")
+    {
+        <p>
+            An email message has been sent to our customer service
+            department regarding the following problem:
+        </p>
+        <p><b>@message</b></p>
+    }
+    else
+    {
+        <p><b>The email was <em>not</em> sent.</b></p>
+        <p>
+            Please check that the code in the ProcessRequest page has
+            correct settings for the SMTP server name, a user name,
+            a password, and a "from" address.
+        </p>
+        if (debuggingFlag)
+        {
+            <p>The following error was reported:</p>
+            <p><em>@errorMessage</em></p>
+        }
+    }
+</body>
+</html>

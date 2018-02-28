@@ -9,9 +9,14 @@ namespace Technical_Prototype.Controllers
     public class TestController : Controller
     {
         // GET: Test
-        public string Index()
+        public ActionResult Index()
         {
-            return "This is my <b>default</b> action...";
+            return View();
+        }
+
+        public ActionResult ProcessEmail()
+        {
+            return View();
         }
 
         // 

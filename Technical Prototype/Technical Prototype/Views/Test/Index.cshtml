@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <form method = "post" action = "ProcessEmail">
+       <input name = "email" /> <br />
+       <textarea name = "message" > </textarea> <br />
+       <input type = "submit" value = "send email" />
+     </form>
+</div>
