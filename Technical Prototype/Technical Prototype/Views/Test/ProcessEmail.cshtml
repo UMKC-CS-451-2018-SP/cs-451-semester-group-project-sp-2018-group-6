@@ -7,20 +7,26 @@
     var message = Request["message"];
     var errorMessage = "";
     var debuggingFlag = false;
+    string compareStreamEmail = "comparestreamapp@outlook.com";
+    string compareStreamPassword = "cs451project";
     try
     {
+
         // Initialize WebMail helper
         WebMail.SmtpServer = "smtp-mail.outlook.com";
         WebMail.SmtpPort = 587;
-        WebMail.UserName = "comparestreamapp";
-        WebMail.Password = "cs451project";
-        WebMail.From = "comparestreamapp@outlook.com";
+        WebMail.UserName = compareStreamEmail;
+        WebMail.Password = compareStreamPassword;
+        WebMail.From = compareStreamEmail;
+        WebMail.EnableSsl = true;
 
         // Send email
         WebMail.Send(to: email,
             subject: "email from comparestream",
             body: message
         );
+     
+
     }
     catch (Exception ex)
     {
