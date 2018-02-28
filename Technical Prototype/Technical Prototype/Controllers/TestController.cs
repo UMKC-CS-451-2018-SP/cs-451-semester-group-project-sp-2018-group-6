@@ -19,6 +19,11 @@ namespace Technical_Prototype.Controllers
             return View();
         }
 
+        public ActionResult BasicPage()
+        {
+            return View();
+        }
+
         // 
         // GET: /Test/Welcome/ 
 
