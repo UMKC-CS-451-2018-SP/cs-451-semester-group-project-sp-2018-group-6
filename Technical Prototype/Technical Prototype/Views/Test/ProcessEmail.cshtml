@@ -36,15 +36,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Request for Assistance</title>
+    <title>Email Process</title>
 </head>
 <body>
-    <p>Sorry to hear that you are having trouble, <b>@email</b>.</p>
+    <p>Wow, cool! Your email was sent to <b>@email</b>.</p>
     @if (errorMessage == "")
     {
         <p>
-            An email message has been sent to our customer service
-            department regarding the following problem:
+            An email message has been sent with the following message:
         </p>
         <p><b>@message</b></p>
     }
@@ -52,9 +51,7 @@
     {
         <p><b>The email was <em>not</em> sent.</b></p>
         <p>
-            Please check that the code in the ProcessRequest page has
-            correct settings for the SMTP server name, a user name,
-            a password, and a "from" address.
+            There was a problem!
         </p>
         if (debuggingFlag)
         {
