@@ -1,0 +1,24 @@
+4	Control Plan
+4.1	Monitoring and Control
+
+Weekly 	–on each Thursday	Team meeting. To discuss project status, progress and potential     problems.
+3/1/2018 	– 	Formal inspection of risk and budget. 
+3/6/2018 	– 	Customer approved UI review. The project manager presents current project status to team.
+3/13/2018	_            Formal inspection of Architecture document.
+4/18/2018          _          Check and review the user and system guide.
+5/4/2018           _         	Executive Review. The project manager presents current project status to users and customers.
+
+4.2	Project Measurements
+	
+Phase	Measurement	Source
+Release Planning	Record how many product features produce.	Mgr
+
+Iteration 
+beginning	Record each iteration scheduled tasks
+Update product features 	Mgr
+Iteration Closeout	Record how many scheduled tasks
+Record how many product features
+Record risk and problem for each iteration	Mgr/Pgr
+Test	Record defects, coverage, efficiency, stability	QA
+Project Closeout	Record project performance data in process database. 	Mgr
+	
