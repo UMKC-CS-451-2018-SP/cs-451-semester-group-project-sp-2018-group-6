@@ -10,6 +10,7 @@ namespace Technical_Prototype.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Home page test";
             return View();
         }
 

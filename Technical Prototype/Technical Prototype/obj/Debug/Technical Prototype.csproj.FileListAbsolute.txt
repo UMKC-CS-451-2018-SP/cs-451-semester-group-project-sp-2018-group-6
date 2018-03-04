@@ -53,3 +53,4 @@ C:/Users/brand/Documents/Visual Studio 2017/Projects/CS451 Project/cs-451-semest
 C:/Users/brand/Documents/Visual Studio 2017/Projects/CS451 Project/cs-451-semester-group-project-sp-2018-group-6/Technical Prototype/Technical Prototype/obj/Debug/Technical Prototype.csproj.CoreCompileInputs.cache
 C:/Users/brand/Documents/Visual Studio 2017/Projects/CS451 Project/cs-451-semester-group-project-sp-2018-group-6/Technical Prototype/Technical Prototype/obj/Debug/Technical Prototype.dll
 C:/Users/brand/Documents/Visual Studio 2017/Projects/CS451 Project/cs-451-semester-group-project-sp-2018-group-6/Technical Prototype/Technical Prototype/obj/Debug/Technical Prototype.pdb
+/Users/joel/Documents/2018sp/CS451/CompareStream/Technical Prototype/Technical Prototype/obj/Debug/Technical Prototype.csprojResolveAssemblyReference.cache
