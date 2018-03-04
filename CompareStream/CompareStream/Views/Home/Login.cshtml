@@ -1,6 +1,15 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var loginEmail = Request["loginEmail"];
 }
 
-
-test
+<div class="container">
+    <div class="row">
+        You are logged in as: @loginEmail
+        <ul class="list-group">
+            <li class="list-group-item">Select TV Shows</li>
+            <li class="list-group-item">Edit TV Shows</li>
+            <li class="list-group-item">Edit streaming services</li>
+        </ul>
+    </div>
+</div>

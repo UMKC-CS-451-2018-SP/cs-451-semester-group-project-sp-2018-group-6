@@ -17,14 +17,16 @@ namespace CompareStream.Controllers
         public ActionResult Login()
         {
             //Add login functionality here
-            ViewBag.Title = "Logged In";
+            var loginEmail = Request["loginEmail"];
+            var loginPassword = Request["loginPassword"];
+            ViewBag.Title = "Logged in";
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+  
             return View();
         }
 
