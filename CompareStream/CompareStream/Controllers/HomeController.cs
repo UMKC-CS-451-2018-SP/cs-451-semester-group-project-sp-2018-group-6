@@ -14,6 +14,13 @@ namespace CompareStream.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            //Add login functionality here
+            ViewBag.Title = "Logged In";
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
