@@ -176,6 +176,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\EditTv.cshtml" />
+    <Content Include="Views\Home\SelectTvShows.cshtml" />
+    <Content Include="Views\Home\EditStreamingServices.cshtml" />
+    <Content Include="Views\Home\ReportProblem.cshtml" />
+    <Content Include="Views\Home\ViewStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

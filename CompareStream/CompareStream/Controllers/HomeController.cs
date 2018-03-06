@@ -23,6 +23,42 @@ namespace CompareStream.Controllers
             return View();
         }
 
+        public ActionResult EditTv()
+        {
+            ViewBag.Title = "Edit TV";
+            return View();
+        }
+
+        public ActionResult SelectTvShows()
+        {
+            ViewBag.Title = "Select TV Shows";
+            return View();
+        }
+
+        public ActionResult EditStreamingServices()
+        {
+            ViewBag.Title = "Edit Streaming Services";
+            return View();
+        }
+
+        public ActionResult ReportProblem()
+        {
+            ViewBag.Title = "Report Problem";
+            return View();
+        }
+
+        public ActionResult ViewStatistics()
+        {
+            ViewBag.Title = "View Statistics";
+            return View();
+        }
+
+        public ActionResult ViewReports()
+        {
+            ViewBag.Title = "View Reports";
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
