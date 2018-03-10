@@ -27,8 +27,12 @@ namespace CompareStream.Controllers
             var loginPassword = Request["loginPassword"];
 
             conn.Open();
-            String sql = "SELECT COUNT(userID) FROM Users WHERE email = '" + loginEmail + "' AND password = '" + loginPassword + "';";
+            String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
             SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add("@email", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@password", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters["@email"].Value = loginEmail;
+            cmd.Parameters["@password"].Value = loginPassword;
 
             if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
             {
