@@ -12,7 +12,7 @@ namespace CompareStream.Controllers
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["csDB"].ToString());
         String loggedInEmail;
-        bool loggedIn;
+        static bool loggedIn;
 
         public ActionResult Index()
         {
@@ -26,23 +26,25 @@ namespace CompareStream.Controllers
             var loginEmail = Request["loginEmail"];
             var loginPassword = Request["loginPassword"];
 
-            conn.Open();
-            String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.Add("@email", System.Data.SqlDbType.NVarChar, 20);
-            cmd.Parameters.Add("@password", System.Data.SqlDbType.NVarChar, 20);
-            cmd.Parameters["@email"].Value = loginEmail;
-            cmd.Parameters["@password"].Value = loginPassword;
-
-            if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
+            if (loggedIn == false)
             {
-                loggedInEmail = loginEmail;
-                loggedIn = true;
-            }
-            
-            ViewBag.Title = "Logged in as " + loggedInEmail;
-            conn.Close();
+                conn.Open();
+                String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.Add("@email", System.Data.SqlDbType.NVarChar, 20);
+                cmd.Parameters.Add("@password", System.Data.SqlDbType.NVarChar, 20);
+                cmd.Parameters["@email"].Value = loginEmail;
+                cmd.Parameters["@password"].Value = loginPassword;
 
+                if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
+                {
+                    loggedInEmail = loginEmail;
+                    loggedIn = true;
+                }
+
+                ViewBag.Title = "Logged in as " + loggedInEmail;
+                conn.Close();
+            }
             // Show user menu if log in valid, else show index
             return loggedIn ? View() : View("Index");
         }
