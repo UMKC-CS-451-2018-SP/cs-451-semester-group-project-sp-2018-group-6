@@ -11,8 +11,6 @@ namespace CompareStream.Controllers
     public class HomeController : Controller
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["csDB"].ToString());
-        String loggedInEmail;
-        static bool loggedIn;
 
         public ActionResult Index()
         {
@@ -26,7 +24,7 @@ namespace CompareStream.Controllers
             var loginEmail = Request["loginEmail"];
             var loginPassword = Request["loginPassword"];
 
-            if (loggedIn == false)
+            if (Request.Cookies["login"]["email"] == null)
             {
                 conn.Open();
                 String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
@@ -38,20 +36,19 @@ namespace CompareStream.Controllers
 
                 if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
                 {
-                    loggedInEmail = loginEmail;
-                    loggedIn = true;
                     HttpCookie loginCookie = new HttpCookie("login");
+                    loginCookie.Expires.Equals(DateTime.Now);
                     loginCookie["email"] = loginEmail;
                     loginCookie["password"] = loginPassword;
                     loginCookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(loginCookie);
                 }
-
-                ViewBag.Title = "Logged in as " + loggedInEmail;
                 conn.Close();
             }
+
+            ViewBag.Title = "Logged in as " + Request.Cookies["login"]["email"];
             // Show user menu if log in valid, else show index
-            return loggedIn ? View() : View("Index");
+            return Request.Cookies["login"]["email"] != null ? View() : View("Index");
         }
 
         public ActionResult EditTv()
