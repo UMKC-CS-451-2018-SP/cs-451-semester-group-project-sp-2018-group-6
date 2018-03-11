@@ -40,6 +40,11 @@ namespace CompareStream.Controllers
                 {
                     loggedInEmail = loginEmail;
                     loggedIn = true;
+                    HttpCookie loginCookie = new HttpCookie("login");
+                    loginCookie["email"] = loginEmail;
+                    loginCookie["password"] = loginPassword;
+                    loginCookie.Expires = DateTime.Now.AddDays(1);
+                    Response.Cookies.Add(loginCookie);
                 }
 
                 ViewBag.Title = "Logged in as " + loggedInEmail;
