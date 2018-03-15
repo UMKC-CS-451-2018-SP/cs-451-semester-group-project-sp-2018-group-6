@@ -24,7 +24,7 @@ namespace CompareStream.Controllers
             var loginEmail = Request["loginEmail"];
             var loginPassword = Request["loginPassword"];
 
-            if (Request.Cookies["login"]["email"] == null)
+            if (Request.Cookies["login"]["email"].Equals(null))
             {
                 conn.Open();
                 String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
@@ -37,7 +37,8 @@ namespace CompareStream.Controllers
                 if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
                 {
                     HttpCookie loginCookie = new HttpCookie("login");
-                    loginCookie.Expires.Equals(DateTime.Now);
+                    HttpCookie oldLoginCookie = Request.Cookies["login"];
+                    oldLoginCookie.Expires.Equals(DateTime.Now);
                     loginCookie["email"] = loginEmail;
                     loginCookie["password"] = loginPassword;
                     loginCookie.Expires = DateTime.Now.AddDays(1);
