@@ -24,7 +24,7 @@ namespace CompareStream.Controllers
             var loginEmail = Request["loginEmail"];
             var loginPassword = Request["loginPassword"];
 
-            if (Request.Cookies["login"]["email"].Equals(null))
+            if (Request.Cookies.Get("login").Equals(null))
             {
                 conn.Open();
                 String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
