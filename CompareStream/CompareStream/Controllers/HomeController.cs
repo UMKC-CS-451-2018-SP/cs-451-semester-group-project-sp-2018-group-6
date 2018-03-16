@@ -24,7 +24,9 @@ namespace CompareStream.Controllers
             var loginEmail = Request["loginEmail"];
             var loginPassword = Request["loginPassword"];
 
-            if (Request.Cookies.Get("login").Equals(null))
+            HttpCookie loggedInCookie = Request.Cookies["login"];
+
+            if (loggedInCookie == null)
             {
                 conn.Open();
                 String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
@@ -37,8 +39,10 @@ namespace CompareStream.Controllers
                 if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
                 {
                     HttpCookie loginCookie = new HttpCookie("login");
-                    HttpCookie oldLoginCookie = Request.Cookies["login"];
-                    oldLoginCookie.Expires.Equals(DateTime.Now);
+                    // The below is for clearing old cookies
+                    // we should probably put this in a Logout() function
+                    //HttpCookie oldLoginCookie = Request.Cookies["login"];
+                    //oldLoginCookie.Expires.AddYears(-999);
                     loginCookie["email"] = loginEmail;
                     loginCookie["password"] = loginPassword;
                     loginCookie.Expires = DateTime.Now.AddDays(1);
@@ -47,7 +51,8 @@ namespace CompareStream.Controllers
                 conn.Close();
             }
 
-            ViewBag.Title = "Logged in as " + Request.Cookies["login"]["email"];
+            String cookieEmail = Request.Cookies["login"]["email"];
+            ViewBag.Title = "Logged in as " + cookieEmail;
             // Show user menu if log in valid, else show index
             return Request.Cookies["login"]["email"] != null ? View() : View("Index");
         }
