@@ -84,7 +84,7 @@ namespace CompareStream.Controllers
             string output = "Error: Failure to add service to database.";
 
             conn.Open();
-            String sql = "INSERT INTO Services (serviceID, serviceName, price) VALUES (3, @name, @price);";
+            String sql = "INSERT INTO Services (serviceName, price) VALUES (@name, @price);";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar, 20);
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float, 20);
