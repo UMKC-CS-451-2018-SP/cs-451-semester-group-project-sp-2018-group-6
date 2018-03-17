@@ -90,6 +90,7 @@ namespace CompareStream.Controllers
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float, 20);
             cmd.Parameters["@name"].Value = serviceName;
             cmd.Parameters["@price"].Value = serviceprice;
+
             try
             {
                 affectedRows = cmd.ExecuteNonQuery();
