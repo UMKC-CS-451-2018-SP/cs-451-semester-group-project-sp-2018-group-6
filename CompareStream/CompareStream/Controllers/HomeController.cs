@@ -75,6 +75,14 @@ namespace CompareStream.Controllers
             return View();
         }
 
+        public string AddStreamingService()
+        {
+            // This is not a full page, but a function used by a form
+            var serviceName = Request["serviceName"];
+            var serviceprice = Request["servicePrice"];
+            return "<div id=\"content\">" + serviceName + " with Price: " + serviceprice + "</div>";
+        }
+
         public ActionResult ReportProblem()
         {
             ViewBag.Title = "Report Problem";

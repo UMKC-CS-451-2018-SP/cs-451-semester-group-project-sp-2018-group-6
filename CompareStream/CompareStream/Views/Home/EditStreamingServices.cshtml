@@ -2,11 +2,12 @@
     You are logged in as: <br />
     <h1>Edit Streaming Services</h1>
     <h3>Add Streaming Service</h3>
-    <form method="post" action="">
+    <form action="/Home/AddStreamingService" id="addServiceForm">
         <label for="serviceName">Service Name:</label>
         <input id="serviceName" name="serviceName" class="form-control" />
         <label for="price">Price:</label>
         <input id="price" name="servicePrice" class="form-control" />
         <input type="submit" value="Add" class="btn" />
-    </form>    
+    </form>   
+    <div id="result"></div>
 </div>
