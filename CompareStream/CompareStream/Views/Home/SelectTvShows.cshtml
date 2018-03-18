@@ -1,4 +1,10 @@
 ﻿<div class="jumbotron">
     You are logged in as:<br />
     Select TV Shows
+    <form action="/Home/ShowSearch" id="showSearchForm">
+        <label for="showName">Show Name:</label>
+        <input id="showName" name="showName" class="form-control" />
+        <input type="submit" value="Add" class="btn" />
+    </form>   
+    <div id="result"></div>
 </div>
