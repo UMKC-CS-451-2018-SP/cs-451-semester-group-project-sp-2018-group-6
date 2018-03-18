@@ -183,6 +183,7 @@
     <Content Include="Views\Home\ViewReports.cshtml" />
     <Content Include="Scripts\custom.forms.js" />
     <Content Include="Views\Shared\LayoutLoggedOut.cshtml" />
+    <Content Include="Views\Shared\LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
