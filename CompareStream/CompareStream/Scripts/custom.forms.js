@@ -10,7 +10,6 @@
 
     posting.done(function( data ) {
         var content = $( data ).filter( "#content" );
-            if(content == 12) { alert('good');}
         $( "#result" ).empty().append( content );
     });
 });
