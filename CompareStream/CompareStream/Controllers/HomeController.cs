@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Configuration;
+using CompareStream.Models;
 
 namespace CompareStream.Controllers
 {
@@ -24,7 +25,7 @@ namespace CompareStream.Controllers
             var loginEmail = Request["loginEmail"];
             var loginPassword = Request["loginPassword"];
 
-            HttpCookie loggedInCookie = Request.Cookies["login"];
+            HttpCookie loggedInCookie = Request.Cookies["email"];
 
             if (loggedInCookie == null)
             {
@@ -51,10 +52,42 @@ namespace CompareStream.Controllers
                 conn.Close();
             }
 
-            string cookieEmail = Request.Cookies["login"]["email"];
+            string cookieEmail = Request.Cookies["email"].Value;
             ViewBag.Title = "Logged in as " + cookieEmail;
             // Show user menu if log in valid, else show index
-            return Request.Cookies["login"]["email"] != null ? View() : View("Index");
+            return cookieEmail != null ? View() : View("Index");
+        }
+
+        public ActionResult DoLogin()
+        {
+            var loginEmail = Request["loginEmail"];
+            var loginPassword = Request["loginPassword"];
+
+            conn.Open();
+            String sql = "SELECT isAdmin FROM Users WHERE email = @email AND password = @password;";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add("@email", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@password", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters["@email"].Value = loginEmail;
+            cmd.Parameters["@password"].Value = loginPassword;
+
+            if (true) //Convert.ToInt16(cmd.ExecuteScalar()) == 1)
+            {
+                HttpCookie emailCookie = new HttpCookie("email");
+                HttpCookie isAdminCookie = new HttpCookie("isAdmin");
+                // The below is for clearing old cookies
+                // we should probably put this in a Logout() function
+                //HttpCookie oldLoginCookie = Request.Cookies["login"];
+                //oldLoginCookie.Expires.AddYears(-999);
+                emailCookie.Value = loginEmail;
+                isAdminCookie.Value = Convert.ToString(cmd.ExecuteScalar());
+                //loginCookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(emailCookie);
+                Response.Cookies.Add(isAdminCookie);
+            }
+            conn.Close();
+
+            return View("Index");
         }
 
         public ActionResult EditTv()
