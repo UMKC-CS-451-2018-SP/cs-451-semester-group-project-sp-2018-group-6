@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var loginEmail = Request["loginEmail"];
+    var loginEmail = Request.Cookies["login"]["email"]; //["loginEmail"];
 }
 
 <div class="jumbotron">
