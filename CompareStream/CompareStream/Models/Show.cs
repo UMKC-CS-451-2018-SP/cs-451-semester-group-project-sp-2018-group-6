@@ -4,9 +4,11 @@ namespace CompareStream.Models
     public class Show
     {
         private string _name;
+        private int _id;
 
-        public Show(string name)
+        public Show(int id, string name)
         {
+            ID = id;
             Name = name;
         }
 
@@ -14,6 +16,12 @@ namespace CompareStream.Models
         {
             get { return _name; }
             set { _name = value; }
+        }
+
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
         }
     }
 }
