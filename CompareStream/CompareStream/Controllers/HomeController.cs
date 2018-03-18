@@ -51,7 +51,7 @@ namespace CompareStream.Controllers
                 conn.Close();
             }
 
-            String cookieEmail = Request.Cookies["login"]["email"];
+            string cookieEmail = Request.Cookies["login"]["email"];
             ViewBag.Title = "Logged in as " + cookieEmail;
             // Show user menu if log in valid, else show index
             return Request.Cookies["login"]["email"] != null ? View() : View("Index");
@@ -80,7 +80,31 @@ namespace CompareStream.Controllers
             // This is not a full page, but a function used by a form
             var serviceName = Request["serviceName"];
             var serviceprice = Request["servicePrice"];
-            return "<div id=\"content\">" + serviceName + " with Price: " + serviceprice + "</div>";
+            int affectedRows = 0;
+            string output = "Error: Failure to add service to database.";
+
+            conn.Open();
+            String sql = "INSERT INTO Services (serviceName, price) VALUES (@name, @price);";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@price", System.Data.SqlDbType.Float, 20);
+            cmd.Parameters["@name"].Value = serviceName;
+            cmd.Parameters["@price"].Value = serviceprice;
+
+            try
+            {
+                affectedRows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                // We can log the exception here
+            }
+            conn.Close();
+
+            if (affectedRows == 1)
+                output = serviceName + " with price: " + serviceprice + " was successfully added.";
+
+            return "<div id=\"content\">" + output + "</div>";
         }
 
         public ActionResult ReportProblem()

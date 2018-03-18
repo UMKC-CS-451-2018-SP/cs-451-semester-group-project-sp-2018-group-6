@@ -4162,7 +4162,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (min-width: 768px) {
   .navbar-static-top {
-    border-radius: 0;
+    border-radius: 10px;
   }
 }
 
