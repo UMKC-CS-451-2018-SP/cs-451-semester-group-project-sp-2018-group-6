@@ -21,41 +21,7 @@ namespace CompareStream.Controllers
 
         public ActionResult Login()
         {
-            // Get email and password values from submitted form
-            var loginEmail = Request["loginEmail"];
-            var loginPassword = Request["loginPassword"];
-
-            HttpCookie loggedInCookie = Request.Cookies["email"];
-
-            if (loggedInCookie == null)
-            {
-                conn.Open();
-                String sql = "SELECT COUNT(userID) FROM Users WHERE email = @email AND password = @password;";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.Add("@email", System.Data.SqlDbType.NVarChar, 20);
-                cmd.Parameters.Add("@password", System.Data.SqlDbType.NVarChar, 20);
-                cmd.Parameters["@email"].Value = loginEmail;
-                cmd.Parameters["@password"].Value = loginPassword;
-
-                if (Convert.ToInt16(cmd.ExecuteScalar()) == 1)
-                {
-                    HttpCookie loginCookie = new HttpCookie("login");
-                    // The below is for clearing old cookies
-                    // we should probably put this in a Logout() function
-                    //HttpCookie oldLoginCookie = Request.Cookies["login"];
-                    //oldLoginCookie.Expires.AddYears(-999);
-                    loginCookie["email"] = loginEmail;
-                    loginCookie["password"] = loginPassword;
-                    loginCookie.Expires = DateTime.Now.AddDays(1);
-                    Response.Cookies.Add(loginCookie);
-                }
-                conn.Close();
-            }
-
-            string cookieEmail = Request.Cookies["email"].Value;
-            ViewBag.Title = "Logged in as " + cookieEmail;
-            // Show user menu if log in valid, else show index
-            return cookieEmail != null ? View() : View("Index");
+            return View();
         }
 
         public ActionResult DoLogin()
