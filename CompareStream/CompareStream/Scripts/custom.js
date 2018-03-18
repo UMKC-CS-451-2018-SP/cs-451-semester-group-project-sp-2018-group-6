@@ -28,3 +28,7 @@ $( "#addShowForm" ).submit(function( event ) {
         $( "#result" ).empty().append( content );
     });
 });
+
+$( "#showNameSearch" ).autocomplete({
+  source: [ "BoJack Horseman", "Black Mirror", "Twin Peaks", "Stranger Things", "Better Call Saul", "Breaking Bad", "It's Always Sunny in Philadelphia" ]
+});
