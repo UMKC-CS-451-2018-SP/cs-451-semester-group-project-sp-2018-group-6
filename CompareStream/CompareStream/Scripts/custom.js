@@ -32,3 +32,8 @@ $( "#addShowForm" ).submit(function( event ) {
 $( "#showNameSearch" ).autocomplete({
   source: [ "BoJack Horseman", "Black Mirror", "Twin Peaks", "Stranger Things", "Better Call Saul", "Breaking Bad", "It's Always Sunny in Philadelphia" ]
 });
+
+function addShowToList()
+{
+    document.getElementById("result").innerHTML += document.getElementById("showNameSearch").value + "<br />";
+}
