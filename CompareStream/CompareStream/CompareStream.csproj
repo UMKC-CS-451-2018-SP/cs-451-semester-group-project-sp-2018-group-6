@@ -181,7 +181,7 @@
     <Content Include="Views\Home\ReportProblem.cshtml" />
     <Content Include="Views\Home\ViewStatistics.cshtml" />
     <Content Include="Views\Home\ViewReports.cshtml" />
-    <Content Include="Scripts\custom.forms.js" />
+    <Content Include="Scripts\custom.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
