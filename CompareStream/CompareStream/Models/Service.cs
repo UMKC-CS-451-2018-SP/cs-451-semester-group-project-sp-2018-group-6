@@ -5,7 +5,7 @@ namespace CompareStream.Models
     {
         private string _name;
         private int _id;
-        private float price;
+        private float _price;
 
         public Service(int id, string name, float price)
         {
@@ -28,8 +28,8 @@ namespace CompareStream.Models
         
         public float Price
         {
-          get { return price; }
-          set { price = value;}
+          get { return _price; }
+          set { _price = value;}
         }
     }
 }
