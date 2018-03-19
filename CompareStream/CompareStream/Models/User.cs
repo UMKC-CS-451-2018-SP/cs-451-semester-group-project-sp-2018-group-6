@@ -3,7 +3,7 @@ namespace CompareStream.Models
 {
     public class User
     {
-        private string email;
+        private string _email;
         private int _id;
 
         public Show(int id, string email)
@@ -14,8 +14,8 @@ namespace CompareStream.Models
 
         public string Email
         {
-            get { return email; }
-            set { email = value; }
+            get { return _email; }
+            set { _email = value; }
         }
 
         public int ID
