@@ -35,5 +35,5 @@ $( "#showNameSearch" ).autocomplete({
 
 function addShowToList()
 {
-    document.getElementById("result").innerHTML += document.getElementById("showNameSearch").value + "<br />";
+    document.getElementById("result").innerHTML += "<li class='list-group-item'>" + document.getElementById("showNameSearch").value + "</li>";
 }
