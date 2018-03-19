@@ -3,7 +3,7 @@ namespace CompareStream.Models
 {
     public class Show
     {
-        private string description;
+        private string _description;
         private int _id;
 
         public Show(int id, string description)
@@ -14,8 +14,8 @@ namespace CompareStream.Models
 
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get { return _description; }
+            set { _description = value; }
         }
 
         public int ID
