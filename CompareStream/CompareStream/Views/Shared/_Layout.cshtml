@@ -27,6 +27,24 @@
                             <li>@Html.ActionLink(" ", "About", "Home")</li>
                             <li>@Html.ActionLink(" ", "Contact", "Home")</li>
                         </ul>
+
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Home/SelectTvShows">Select TV Shows</a></li>
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Edit
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/EditTv">Edit TV Shows</a>></li>
+                                    <li><a href="/Home/EditStreamingServices">Edit streaming services</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="/Home/ReportProblem">Report Problem</a></li>
+                        </ul>
+
                     </div>
                 </div>
             </nav>
