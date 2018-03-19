@@ -105,6 +105,54 @@ namespace CompareStream.Controllers
 
             return "<div id=\"content\">" + output + "</div>";
         }
+        
+        
+        public string AddTVShow()
+        {
+           
+            // This is not a full page, but a function used by a form
+            
+            var showName = Request["showName"];
+
+            int affectedRows = 0;
+
+            string output = "Error: Failure to add TV show to database.";
+
+
+            conn.Open();
+
+            String sql = "INSERT INTO TVShows (showName) VALUES (@name);";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar, 20);
+
+            cmd.Parameters["@name"].Value = showName;
+
+
+            try
+
+            {
+
+                affectedRows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception e)
+
+            {
+
+                // We can log the exception here
+
+            }
+
+            conn.Close();
+
+
+            return "<div id=\"content\">" + output + "</div>"
+            
+        }    
+        
 
         public ActionResult ReportProblem()
         {
