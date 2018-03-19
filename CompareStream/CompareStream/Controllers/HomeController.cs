@@ -121,11 +121,11 @@ namespace CompareStream.Controllers
 
             conn.Open();
 
-            String sql = "INSERT INTO TVShows (showName) VALUES (@name);";
+            String sql = "INSERT INTO Shows (showName) VALUES (@name);";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar, 40);
 
             cmd.Parameters["@name"].Value = showName;
 
@@ -148,8 +148,10 @@ namespace CompareStream.Controllers
 
             conn.Close();
 
+            if (affectedRows == 1)
+                output = showName + " was successfully added.";
 
-            return "<div id=\"content\">" + output + "</div>"
+            return "<div id=\"content\">" + output + "</div>";
             
         }    
         
