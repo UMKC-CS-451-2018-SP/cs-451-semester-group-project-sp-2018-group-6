@@ -11,7 +11,7 @@ namespace CompareStream.Models
         {
             ID = id;
             Name = name;
-            Price = price
+            Price = price;
         }
 
         public string Name
