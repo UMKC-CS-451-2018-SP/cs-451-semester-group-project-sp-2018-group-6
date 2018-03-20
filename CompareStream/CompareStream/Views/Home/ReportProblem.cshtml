@@ -1,3 +1,9 @@
 ﻿<div class="jumbotron">
-    Report problem
+    <h1>Report problem</h1>
+    <form action="/Home/AddReport" id="addReportForm">
+        <label for="reportDescription">Report description:</label>
+        <textarea id="reportDescription" name="reportDescription" class="form-control"></textarea>
+        <input type="submit" value="Submit" class="btn" />
+    </form>
+    <div id="result"></div>
 </div>
