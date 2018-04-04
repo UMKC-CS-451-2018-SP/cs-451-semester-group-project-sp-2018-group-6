@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Configuration;
 using CompareStream.Models;
+using System.Web.Script.Serialization;
 
 namespace CompareStream.Controllers
 {
@@ -72,6 +73,31 @@ namespace CompareStream.Controllers
         {
             ViewBag.Title = "Edit Streaming Services";
             return View();
+        }
+
+        public string SearchUsers(string email)
+        {
+            List<User> userList = new List<User>();
+            string query = "SELECT userID, email FROM Users WHERE email LIKE '%" + email + "%';";
+            var cmd = new SqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+            conn.Open();
+            using (SqlDataReader Reader = cmd.ExecuteReader())
+            {
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        var userID = Reader.GetInt32(Reader.GetOrdinal("userID"));
+                        string userEmail = Reader.GetString(Reader.GetOrdinal("email"));
+                        User foundUser = new User(userID, userEmail);
+                        userList.Add(foundUser);
+                    }
+                }
+            }
+            conn.Close();
+            string output = new JavaScriptSerializer().Serialize(userList);
+            return output;
         }
 
         public string AddStreamingService()
