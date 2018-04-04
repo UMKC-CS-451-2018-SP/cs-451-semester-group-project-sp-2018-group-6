@@ -38,3 +38,8 @@ function addShowToList()
 {
     document.getElementById("result").innerHTML += "<li class='list-group-item'>" + document.getElementById("showNameSearch").value + "</li>";
 }
+
+if (Cookies.get('isAdmin') == "True")
+{
+    $( "#admin-dropdown" ).show();
+}
