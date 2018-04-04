@@ -6,7 +6,7 @@ namespace CompareStream.Models
         private string _email;
         private int _id;
 
-        public Show(int id, string email)
+        public User(int id, string email)
         {
             ID = id;
             Email = email;
