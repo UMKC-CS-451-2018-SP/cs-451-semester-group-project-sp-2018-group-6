@@ -1,12 +1,12 @@
 using System;
 namespace CompareStream.Models
 {
-    public class Show
+    public class Report
     {
         private string _description;
         private int _id;
 
-        public Show(int id, string description)
+        public Report(int id, string description)
         {
             ID = id;
             Description = description;
