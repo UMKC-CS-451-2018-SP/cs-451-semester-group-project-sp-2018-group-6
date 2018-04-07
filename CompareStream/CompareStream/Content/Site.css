@@ -27,3 +27,6 @@ textarea {
 #admin-dropdown {
     display: none;
 }
+#anonymous-login {
+    display: none;
+}

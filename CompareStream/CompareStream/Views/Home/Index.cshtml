@@ -1,28 +1,4 @@
-﻿@{
-    bool isAdmin = false;
-    String loginEmail = null;
-    try
-    {
-        isAdmin = Convert.ToBoolean(Request.Cookies["isAdmin"].Value);
-        loginEmail = Convert.ToString(Request.Cookies["email"].Value);
-    }
-    catch (Exception e)
-    {
-        //Log exception here.
-    }
-    if (loginEmail == null)
-    {
-        Layout = "~/Views/Shared/_LayoutAnonymous.cshtml";
-    }
-    else if (!isAdmin)
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    }
-}
+﻿
 
 
 <div class="jumbotron">
