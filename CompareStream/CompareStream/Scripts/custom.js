@@ -43,6 +43,10 @@ $( document ).ready(function() {
     if (Cookies.get('isAdmin') == "True") {
         $( "#admin-dropdown" ).show();
     }
+
+    if (typeof Cookies.get('email') === 'undefined') {
+        $( "#anonymous-login" ).show();
+    }
 });
 
 $( "#accountSearchForm" ).submit(function( event ) {
