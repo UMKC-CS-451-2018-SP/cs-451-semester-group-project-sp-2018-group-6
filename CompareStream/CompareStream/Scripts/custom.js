@@ -49,6 +49,12 @@ $( document ).ready(function() {
     }
 });
 
+function viewAccount(user_email, user_id)
+{
+    $( "#userInspector" ).empty().append(user_email + " has the user ID: " + user_id)
+    .append("<br />Favorite TV Shows:<br />");
+}
+
 $( "#accountSearchForm" ).submit(function( event ) {
     event.preventDefault();
     var $form = $( this );
@@ -62,7 +68,7 @@ $( "#accountSearchForm" ).submit(function( event ) {
         success: function(data) {
             $( "#result" ).empty();
             $(data.users).each(function(index, value) {
-            $( "#result" ).append('<li class="list-group-item">Email: ' + value.Email + ' with user ID: ' + value.ID + ' [<a href="#' + value.ID + '">Inspect</a>]</li>');
+            $( "#result" ).append('<li class="list-group-item">Email: ' + value.Email + ' [<a href="#" onclick="viewAccount(\'' + value.Email + '\', ' + value.ID + ');">Inspect</a>]</li>');
             });
         }
     });
