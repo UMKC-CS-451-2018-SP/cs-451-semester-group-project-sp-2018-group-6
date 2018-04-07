@@ -97,7 +97,7 @@ namespace CompareStream.Controllers
             }
             conn.Close();
             string output = new JavaScriptSerializer().Serialize(userList);
-            return output;
+            return "{\"users\":" + output + "}";
         }
 
         public string AddStreamingService()
@@ -197,6 +197,11 @@ namespace CompareStream.Controllers
         public ActionResult ViewReports()
         {
             ViewBag.Title = "View Reports";
+            return View();
+        }
+
+        public ActionResult ViewAccounts()
+        {
             return View();
         }
 
