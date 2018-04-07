@@ -45,16 +45,22 @@ $( document ).ready(function() {
     }
 });
 
-function searchUsers(searchEmail)
-{
+$( "#accountSearchForm" ).submit(function( event ) {
+    event.preventDefault();
+    var $form = $( this );
+    searchEmail = $form.find( "input[name='accountEmail']").val();
+
     $.ajax({
-        url: '/Home/SearchUsers?email=searchEmail',
+        url: '/Home/SearchUsers?email=' + searchEmail,
         dataType: 'json',
         type: 'get',
         cache: false,
         success: function(data) {
+            $( "#result" ).empty();
             $(data.users).each(function(index, value) {
-            console.log(value.Email);});
-            }
-        });
-}
+            console.log(value.Email);
+            $( "#result" ).append('<li>Email: ' + value.Email + ' with user ID: ' + value.ID + '</li>');
+            });
+        }
+    });
+});
