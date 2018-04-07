@@ -58,7 +58,6 @@ $( "#accountSearchForm" ).submit(function( event ) {
         success: function(data) {
             $( "#result" ).empty();
             $(data.users).each(function(index, value) {
-            console.log(value.Email);
             $( "#result" ).append('<li>Email: ' + value.Email + ' with user ID: ' + value.ID + '</li>');
             });
         }
