@@ -58,7 +58,7 @@ $( "#accountSearchForm" ).submit(function( event ) {
         success: function(data) {
             $( "#result" ).empty();
             $(data.users).each(function(index, value) {
-            $( "#result" ).append('<li>Email: ' + value.Email + ' with user ID: ' + value.ID + '</li>');
+            $( "#result" ).append('<li class="list-group-item">Email: ' + value.Email + ' with user ID: ' + value.ID + '</li>');
             });
         }
     });
