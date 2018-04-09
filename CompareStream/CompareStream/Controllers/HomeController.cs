@@ -156,10 +156,53 @@ namespace CompareStream.Controllers
         }    
         
 
-        public ActionResult ReportProblem()
+        public String ReportProblem()
         {
-            ViewBag.Title = "Report Problem";
-            return View();
+            //ViewBag.Title = "Report Problem";
+            //return View();
+
+            string output = "nothing";
+            string outputError = "Error: Failure to report problem.";
+            string outputSuccess = "Problem report was successfully sent.";
+            var problemDescription = Request["problemDescription"];
+            bool problemFixed = false;
+            int affectedRows = 0;
+            
+            conn.Open();
+
+            String sql = "INSERT INTO Report (problemDescription, problemFixed) VALUES (@problemDescription, @problemFixed);";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add("@problemDescription", System.Data.SqlDbType.NVarChar, 300);
+            cmd.Parameters.Add("@problemFixed", System.Data.SqlDbType.Bit);
+            cmd.Parameters["@problemDescription"].Value = problemDescription;
+            cmd.Parameters["@problemFixed"].Value = problemFixed;
+
+            try
+
+            {
+
+                affectedRows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception e)
+
+            {
+
+                // We can log the exception here
+
+            }
+
+            conn.Close();
+
+            if (affectedRows == 1)
+                output = outputSuccess;
+            else
+                output = outputError;
+
+            return "<div id=\"content\">" + output + "</div>";
+
+
         }
 
         public ActionResult ViewStatistics()
