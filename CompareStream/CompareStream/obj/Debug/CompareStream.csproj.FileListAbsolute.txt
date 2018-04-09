@@ -59,3 +59,34 @@ C:\Users\brand\Documents\Visual Studio 2017\Projects\CS451 Project\CompareStream
 C:\Users\brand\Documents\Visual Studio 2017\Projects\CS451 Project\CompareStream\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.csproj.CopyComplete
 C:\Users\brand\Documents\Visual Studio 2017\Projects\CS451 Project\CompareStream\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.dll
 C:\Users\brand\Documents\Visual Studio 2017\Projects\CS451 Project\CompareStream\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.pdb
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\CompareStream.dll.config
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\CompareStream.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\CompareStream.pdb
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Antlr3.Runtime.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Newtonsoft.Json.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Helpers.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Mvc.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Optimization.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Razor.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.WebPages.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.WebPages.Razor.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\WebGrease.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Helpers.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Mvc.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Optimization.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.Razor.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.WebPages.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\System.Web.WebPages.Razor.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Antlr3.Runtime.pdb
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Newtonsoft.Json.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.csprojResolveAssemblyReference.cache
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.csproj.CoreCompileInputs.cache
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.csproj.CopyComplete
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.dll
+C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.pdb
