@@ -1,0 +1,162 @@
+Create database TV_service
+use TV_service
+create table Users(
+	User_ID		int			not null
+				identity(1,1),
+	Email		nchar(50)		not null,
+	password	int	null,
+	IsAdmin		bit	null,
+	constraint	UsersPK	PRIMARY KEY	(User_ID)
+	);
+
+
+create table Streaming_Service(
+	StrService_ID	int			not null
+					identity(1,1),
+	Service_Name	varchar(50)		not null,
+	Price			float			null,
+	constraint	Streaming_ServicePK	PRIMARY KEY (StrService_ID)
+	);
+
+create table TV_Shows(
+	TVShow_ID		int			not null
+					identity(1,1),
+	Show_Name		varchar(50)	not null,
+	constraint		TV_ShowsPK	PRIMARY KEY(TVShow_ID)
+	);	
+
+create table Service_Shows(
+	SerShow_ID		int			not null
+					identity(1,1),
+	strService_ID	int			not null,
+	TVShow_ID		int			not null,
+	constraint	Service_ShowsPK	PRIMARY KEY(SerShow_ID),
+	constraint	Service_Shows_Streaming_ServiceFK FOREIGN KEY (StrService_ID)
+				REFERENCES Streaming_Service (StrService_ID),
+	constraint	Service_Shows_TV_ShowsFK FOREIGN KEY (TVShow_ID)
+				REFERENCES TV_Shows (TVShow_ID)
+	);
+
+  
+create table Report(
+	Report_ID		int					not null
+					identity(1,1),
+	User_ID			int					not null,
+	Report_Description	varchar(300)	null,
+	isFixed			bit					null,
+	constraint		ReportPK	PRIMARY KEY(Report_ID),
+	constraint		Report_UsersFK FOREIGN KEY (User_ID)
+					REFERENCES	Users (User_ID)
+	);
+create table Network(
+	networkID	int			not null
+					identity(1,1),
+	networkName	varchar(50)		not null,
+	
+	constraint	NetworkPK	PRIMARY KEY (networkID)
+	);	
+
+create table NetworkTVShow(
+	networkTVShowID	int			not null
+					identity(1,1),
+	networkID	int		not null,
+	TVShow_ID       int		not null,
+	constraint	NetworkTVShowPK	PRIMARY KEY (networkTVShowID)
+	constraint	NetworkTVShow_NetworkFK FOREIGN KEY (networkID)
+					REFERENCES	 Network(networkID)
+	constraint	NetworkTVShow_TV_ShowsFK FOREIGN KEY (TVShow_ID)
+					REFERENCES	 TV_Shows(TVShow_ID)
+	);	
+
+create table UsersTVShows(
+	UsersTVShows_ID int		not null
+					identity(1,1),
+	User_ID		int		not null,
+	TVShow_ID	int		not null,
+	Rank		int		not null,	
+	constraint	UsersTVShowsPK	PRIMARY KEY (UsersTVShows_ID)
+	constraint	UsersTVShows_UsersFK FOREIGN KEY (User_ID)
+					REFERENCES	 Users(User_ID)
+	);
+
+insert into Users(Email, password, IsAdmin) VALUES ('jabl@MAIL.UMKC.EDU',20131009,0)
+insert into Users(Email, password, IsAdmin) VALUES ('joal@MAIL.UMKC.EDU',20151109,1)
+insert into Users(Email, password, IsAdmin) VALUES ('min@MAIL.UMKC.EDU',20181030,0)
+insert into Users(Email, password, IsAdmin) VALUES ('hamza@MAIL.UMKC.EDU',20100309,0)
+insert into Users(Email, password, IsAdmin) VALUES ('adrian@MAIL.UMKC.EDU',20111219,0)
+SELECT* FROM Users
+
+insert into TV_Shows(Show_Name) VALUES ('Dark')
+insert into TV_Shows(Show_Name) VALUES ('The crown')
+insert into TV_Shows(Show_Name) VALUES ('House of Cards')
+insert into TV_Shows(Show_Name) VALUES ('GLOW')
+insert into TV_Shows(Show_Name) VALUES ('The Get Down')
+SELECT* FROM TV_Shows
+
+insert into Streaming_Service(Service_Name, Price) VALUES ('HULU',22.5)
+insert into Streaming_Service(Service_Name, Price) VALUES ('SLING',23.5)
+insert into Streaming_Service(Service_Name, Price) VALUES ('DIRECTTV',25.5)
+insert into Streaming_Service(Service_Name, Price) VALUES ('PLAYSTATION',20.5)
+insert into Streaming_Service(Service_Name, Price) VALUES ('YOUTUBE',21.5)
+SELECT* FROM Streaming_Service
+
+insert into Report(User_ID, Report_Description, isFixed) VALUES (1, 'still cannot work well', 0)
+insert into Report(User_ID, Report_Description, isFixed) VALUES (2, 'work well', 1)
+insert into Report(User_ID, Report_Description, isFixed) VALUES (3, 'still cannot work well', 0)
+insert into Report(User_ID, Report_Description, isFixed) VALUES (4, 'still cannot work well', 0)
+insert into Report(User_ID, Report_Description, isFixed) VALUES (5, 'work well', 1)
+SELECT* FROM Report
+
+insert into Service_Shows(strService_ID, TVShow_ID) values (1,1)
+insert into Service_Shows(strService_ID, TVShow_ID) values (2,1)
+insert into Service_Shows(strService_ID, TVShow_ID) values (3,1)
+insert into Service_Shows(strService_ID, TVShow_ID) values (4,1)
+insert into Service_Shows(strService_ID, TVShow_ID) values (5,1)
+SELECT* FROM Service_Shows
+
+insert into Network(networkName) values('CNN')
+insert into Network(networkName) values('HGTV')
+insert into Network(networkName) values('amc')
+insert into Network(networkName) values('newsy')
+insert into Network(networkName) values('ESPN')
+SELECT* FROM Network
+
+insert into NetworkTVShow(networkID, TVShow_ID )values (2,1)
+insert into NetworkTVShow(networkID, TVShow_ID )values (2,2)
+insert into NetworkTVShow(networkID, TVShow_ID )values (2,3)
+insert into NetworkTVShow(networkID, TVShow_ID )values (2,4)
+insert into NetworkTVShow(networkID, TVShow_ID )values (2,5)
+SELECT* FROM NetworkTVShow
+
+insert into UsersTVShows(User_ID, TVShow_ID, Rank)values (1,1,1)
+insert into UsersTVShows(User_ID, TVShow_ID, Rank)values (1,2,2)
+insert into UsersTVShows(User_ID, TVShow_ID, Rank)values (1,3,4)
+insert into UsersTVShows(User_ID, TVShow_ID, Rank)values (1,4,3)
+insert into UsersTVShows(User_ID, TVShow_ID, Rank)values (1,5,5)
+SELECT* FROM UsersTVShows
+
+
+
+SELECT * FROM Users;
+update Users set Email = 'mxiong6886@gmail.com'where User_ID = 2;
+delete from Users where User_ID = 9 ;
+
+select *from TV_Shows;
+UPDATE TV_Shows set Show_Name = 'The Get Down' where TVShow_ID = 6;
+
+select * from Streaming_Service;
+delete from Streaming_Service where StrService_ID = 9;
+
+select *from Users;
+select *TV_Shows;
+select *from Streaming_Service;
+select *from Streaming_Service;
+select *from Service_Shows;
+select *from Report;
+select *from Network;
+select *from NetworkTVShow;
+select *from UsersTVShows;
+
+
+
+
