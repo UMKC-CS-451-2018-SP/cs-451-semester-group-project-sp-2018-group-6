@@ -193,18 +193,18 @@ namespace CompareStream.Controllers
             string output = "nothing";
             string outputError = "Error: Failure to report problem.";
             string outputSuccess = "Problem report was successfully sent.";
-            var problemDescription = Request["problemDescription"];
-            bool problemFixed = false;
+            var reportDescription = Request["reportDescription"];
+            int usersID = 1;
             int affectedRows = 0;
 
             conn.Open();
 
-            String sql = "INSERT INTO Report (problemDescription, userID) VALUES (@problemDescription, @userID);";
+            String sql = "INSERT INTO Report (reportDescription, userID, isFixed) VALUES (@reportDescription, @userID, 0);";
             SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.Add("@problemDescription", System.Data.SqlDbType.NVarChar, 300);
-            cmd.Parameters.Add("@problemFixed", System.Data.SqlDbType.Bit);
-            cmd.Parameters["@problemDescription"].Value = problemDescription;
-            cmd.Parameters["@problemFixed"].Value = problemFixed;
+            cmd.Parameters.Add("@reportDescription", System.Data.SqlDbType.NVarChar, 300);
+            cmd.Parameters.Add("@userID", System.Data.SqlDbType.Int);
+            cmd.Parameters["@reportDescription"].Value = reportDescription;
+            cmd.Parameters["@userID"].Value = usersID;
 
             try
 
@@ -229,7 +229,7 @@ namespace CompareStream.Controllers
             else
                 output = outputError;
 
-            return "<div id=\"content\">" + output + "</div>";
+            return "<div id=\"content\">" + output + " " + reportDescription + "</div>";
         }
 
         public ActionResult ViewStatistics()
