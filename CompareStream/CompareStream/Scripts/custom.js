@@ -29,6 +29,21 @@ $( "#addShowForm" ).submit(function( event ) {
     });
 });
 
+$( "#reportProblemForm" ).submit(function( event ) {
+    event.preventDefault();
+
+    var $form = $( this ),
+        name = $form.find( "input[name='reportDescription']" ).val(),
+        url = $form.attr( "action" );
+
+    var posting = $.post( url, { reportDescription: name } );
+
+    posting.done(function( data ) {
+        var content = $( data ).filter( "#content" );
+        $( "#result" ).empty().append( content );
+    });
+});
+
 $( "#showNameSearch" ).autocomplete({
   source: [ "BoJack Horseman", "Black Mirror", "Twin Peaks", "Stranger Things", "Better Call Saul", "Breaking Bad", "It's Always Sunny in Philadelphia" ]
 });
