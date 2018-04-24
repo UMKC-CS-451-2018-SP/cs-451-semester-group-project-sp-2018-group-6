@@ -260,6 +260,32 @@ namespace CompareStream.Controllers
             return "{\"reports\":" + output + "}";
         }
 
+        public string BrowseShows(int offset)
+        {
+            List<Show> showList = new List<Show>();
+            string query = "SELECT * FROM Shows;";
+            var cmd = new SqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+            conn.Open();
+            using (SqlDataReader Reader = cmd.ExecuteReader())
+            {
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        var showID = Reader.GetInt32(Reader.GetOrdinal("showID"));
+                        string showName = Reader.GetString(Reader.GetOrdinal("showName"));
+
+                        Show show = new Show(showID, showName);
+                        showList.Add(show);
+                    }
+                }
+            }
+            conn.Close();
+            string output = new JavaScriptSerializer().Serialize(showList);
+            return "{\"shows\":" + output + "}";
+        }
+
         public ActionResult ViewStatistics()
         {
             ViewBag.Title = "View Statistics";
