@@ -260,7 +260,7 @@ namespace CompareStream.Controllers
             return "{\"reports\":" + output + "}";
         }
 
-        public string BrowseShows(int offset)
+        public string BrowseShows()
         {
             List<Show> showList = new List<Show>();
             string query = "SELECT * FROM Shows;";
