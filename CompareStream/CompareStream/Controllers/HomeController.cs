@@ -232,6 +232,34 @@ namespace CompareStream.Controllers
             return "<div id=\"content\">" + output + "<br /><br />Your report:<br /><br />"+ reportDescription + "</div>";
         }
 
+        public string BrowseReports(int offset)
+        {
+            List<Report> reportList = new List<Report>();
+            string query = "SELECT * FROM Report ORDER BY reportID DESC OFFSET " + offset + " ROWS;";
+            var cmd = new SqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+            conn.Open();
+            using (SqlDataReader Reader = cmd.ExecuteReader())
+            {
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        var reportID = Reader.GetInt32(Reader.GetOrdinal("reportID"));
+                        var userID = Reader.GetInt32(Reader.GetOrdinal("userID"));
+                        string reportDescription = Reader.GetString(Reader.GetOrdinal("reportDescription"));
+                        bool isFixed = Reader.GetBoolean(Reader.GetOrdinal("isFixed"));
+
+                        Report report = new Report(reportID, userID, reportDescription, isFixed);
+                        reportList.Add(report);
+                    }
+                }
+            }
+            conn.Close();
+            string output = new JavaScriptSerializer().Serialize(reportList);
+            return "{\"reports\":" + output + "}";
+        }
+
         public ActionResult ViewStatistics()
         {
             ViewBag.Title = "View Statistics";
