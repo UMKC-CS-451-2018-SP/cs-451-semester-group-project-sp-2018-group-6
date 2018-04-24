@@ -229,7 +229,7 @@ namespace CompareStream.Controllers
             else
                 output = outputError;
 
-            return "<div id=\"content\">" + output + " " + reportDescription + "</div>";
+            return "<div id=\"content\">" + output + "<br /><br />Your report:<br /><br />"+ reportDescription + "</div>";
         }
 
         public ActionResult ViewStatistics()
