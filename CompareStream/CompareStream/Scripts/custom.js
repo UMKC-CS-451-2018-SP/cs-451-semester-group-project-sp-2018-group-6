@@ -88,3 +88,22 @@ $( "#accountSearchForm" ).submit(function( event ) {
         }
     });
 });
+
+$( "#browseReportsForm" ).submit(function( event ) {
+    event.preventDefault();
+    var $form = $( this );
+    offset = $form.find( "input[name='reportOffset']").val();
+
+    $.ajax({
+        url: '/Home/BrowseReports?offset=' + offset,
+        dataType: 'json',
+        type: 'get',
+        cache: false,
+        success: function(data) {
+            $( "#result" ).empty();
+            $(data.reports).each(function(index, value) {
+            $( "#result" ).append('<li class="list-group-item">User: ' + value.UID + ' with report: ' + value.Description +'</li>');
+            });
+        }
+    });
+});
