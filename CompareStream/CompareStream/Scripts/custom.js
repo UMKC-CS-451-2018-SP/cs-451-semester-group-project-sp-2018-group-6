@@ -107,3 +107,17 @@ $( "#browseReportsForm" ).submit(function( event ) {
         }
     });
 });
+
+$( document ).ready(function() {
+    $.ajax({
+        url: '/Home/BrowseShows',
+        dataType: 'json',
+        type: 'get',
+        cache: false,
+        success: function(data) {
+            $(data.shows).each(function(index, value) {
+            $( "#showsList" ).append('<li class="list-group-item">' + value.Name +' [<a href="#' + value.ID +'">Edit</a>]</li>');
+            });
+        }
+    });
+});
