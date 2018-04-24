@@ -90,3 +90,4 @@ C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\Compare
 C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.csproj.CopyComplete
 C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.dll
 C:\Users\Kris\source\repos\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.pdb
+C:\Users\brand\Documents\Visual Studio 2017\Projects\CS451 Project\CompareStream\cs-451-semester-group-project-sp-2018-group-6\CompareStream\CompareStream\obj\Debug\CompareStream.csprojResolveAssemblyReference.cache
