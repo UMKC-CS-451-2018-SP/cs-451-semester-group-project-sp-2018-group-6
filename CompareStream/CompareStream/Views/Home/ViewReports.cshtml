@@ -1,3 +1,10 @@
 ﻿<div class="jumbotron">
     View Reports
+    <form action="/Home/BrowseReports" id="browseReportsForm">
+        <label for="reportOffset">Offset:</label>
+        <input id="reportOffset" name="reportOffset" class="form-control" />
+        <input type="submit" value="Browse" class="btn" />
+    </form>
+    <hr />
+    <ul id="result" class="list-group"></ul>
 </div>
