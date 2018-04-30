@@ -60,7 +60,7 @@ namespace CompareStream.Controllers
         public ActionResult EditNetworks()
         {
             ViewBag.Title = "Edit Networks";
-            return View();
+            return View("EditNetworks");
         }
 
         public ActionResult EditTv()
