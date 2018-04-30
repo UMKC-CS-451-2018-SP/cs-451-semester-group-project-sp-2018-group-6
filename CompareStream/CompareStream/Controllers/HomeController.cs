@@ -57,6 +57,12 @@ namespace CompareStream.Controllers
             return View("Index");
         }
 
+        public ActionResult EditNetworks()
+        {
+            ViewBag.Title = "Edit Networks";
+            return View();
+        }
+
         public ActionResult EditTv()
         {
             ViewBag.Title = "Edit TV";
@@ -179,7 +185,55 @@ namespace CompareStream.Controllers
 
             return "<div id=\"content\">" + output + "</div>";
             
-        }    
+        }
+
+        public string AddNetwork()
+        {
+
+            // This is not a full page, but a function used by a form
+
+            var networkName = Request["networkName"];
+
+            int affectedRows = 0;
+
+            string output = "Error: Failure to add Network to database.";
+
+
+            conn.Open();
+
+            String sql = "INSERT INTO Network (networkName) VALUES (@name);";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar, 40);
+
+            cmd.Parameters["@name"].Value = networkName;
+
+
+            try
+
+            {
+
+                affectedRows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception e)
+
+            {
+
+                // We can log the exception here
+
+            }
+
+            conn.Close();
+
+            if (affectedRows == 1)
+                output = networkName + " was successfully added.";
+
+            return "<div id=\"content\">" + output + "</div>";
+
+        }
         
 
         public ActionResult ReportProblem()
