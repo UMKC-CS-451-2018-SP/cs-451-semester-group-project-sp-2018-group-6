@@ -85,6 +85,19 @@ function viewAccount(user_email, user_id)
     .append("<br />Favorite TV Shows:<br />");
 }
 
+function editNetworkShow(network_id, show_id, containsShow)
+{
+    $.ajax({
+        url: '/Home/EditNetworkShow?networkID=' + network_id + '&showID=' + show_id + '&containsShow=' + containsShow,
+        dataType: 'html',
+        type: 'get',
+        cache: false,
+        success: function(data) {
+            alert(data);
+        }
+    });
+}
+
 function editShow(show_id)
 {
     $( "#tv-show-" + show_id ).append('<div>Networks:<br />');
@@ -97,7 +110,7 @@ function editShow(show_id)
             $(data.networks).each(function(index, value) {
             var isChecked = "";
             if (value.ContainsShow == true) isChecked = "checked";
-            $( "#tv-show-" + show_id ).append('<input type="checkbox" class="form-check-input" ' + isChecked + ' /> ' + value.Name + ' ');
+            $( "#tv-show-" + show_id ).append('<input type="checkbox" class="form-check-input" ' + isChecked + ' onclick="editNetworkShow(' + value.ID + ', ' + show_id + ', ' + value.ContainsShow + ');" /> ' + value.Name + ' ');
             });
         }
     });
