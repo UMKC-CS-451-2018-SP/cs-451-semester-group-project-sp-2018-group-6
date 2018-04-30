@@ -93,7 +93,7 @@ function editNetworkShow(network_id, show_id, containsShow)
         type: 'get',
         cache: false,
         success: function(data) {
-            alert(data);
+            $( "#result" ).empty().append(data);
         }
     });
 }
