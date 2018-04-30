@@ -149,7 +149,7 @@ $( "#browseReportsForm" ).submit(function( event ) {
         success: function(data) {
             $( "#result" ).empty();
             $(data.reports).each(function(index, value) {
-            $( "#result" ).append('<li class="list-group-item">User: ' + value.UID + ' with report: ' + value.Description +'</li>');
+            $( "#result" ).append('<li class="list-group-item">Report: ' + value.Description +'</li>');
             });
         }
     });
