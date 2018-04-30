@@ -366,6 +366,74 @@ namespace CompareStream.Controllers
             return "{\"shows\":" + output + "}";
         }
 
+        public string EditNetworkShow(int networkID, int showID, bool containsShow)
+        {
+            int affectedRows = 0;
+
+            if (containsShow == false)
+            {
+                conn.Open();
+
+                String query = "INSERT INTO NetworkShow (networkID, showID) VALUES (@networkID, @showID);";
+                SqlCommand cmmd = new SqlCommand(query, conn);
+                cmmd.Parameters.Add("@networkID", System.Data.SqlDbType.Int);
+                cmmd.Parameters.Add("@showID", System.Data.SqlDbType.Int);
+                cmmd.Parameters["@networkID"].Value = networkID;
+                cmmd.Parameters["@showID"].Value = showID;
+
+                try
+
+                {
+
+                    affectedRows = cmmd.ExecuteNonQuery();
+
+                }
+
+                catch (Exception e)
+
+                {
+
+                    // We can log the exception here
+
+                }
+
+                conn.Close();
+
+                if (affectedRows == 1) return "Success!";
+                return "Could not add TV Show to Network";
+            }
+
+            conn.Open();
+
+            String sql = "DELETE FROM NetworkShow WHERE networkID=@networkID AND showID=@showID;";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add("@networkID", System.Data.SqlDbType.Int);
+            cmd.Parameters.Add("@showID", System.Data.SqlDbType.Int);
+            cmd.Parameters["@networkID"].Value = networkID;
+            cmd.Parameters["@showID"].Value = showID;
+
+            try
+
+            {
+
+                affectedRows = cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception e)
+
+            {
+
+                // We can log the exception here
+
+            }
+
+            conn.Close();
+
+            if (affectedRows > 0) return "Success!";
+            return "Failure to remove tv show from network";
+        }
+
         public ActionResult ViewStatistics()
         {
             ViewBag.Title = "View Statistics";
