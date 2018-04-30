@@ -109,7 +109,7 @@ namespace CompareStream.Controllers
         public string PullNetworks(int showID)
         {
             List<Network> networkList = new List<Network>();
-            string query = "SELECT * FROM Network WHERE " + showID + " IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
+            string query = "SELECT *, '1' AS belongsTo FROM Network WHERE " + showID + " IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
             var cmd = new SqlCommand(query, conn);
             cmd.CommandType = System.Data.CommandType.Text;
             conn.Open();
