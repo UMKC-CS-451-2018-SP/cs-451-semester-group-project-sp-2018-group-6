@@ -87,7 +87,19 @@ function viewAccount(user_email, user_id)
 
 function editShow(show_id)
 {
-    $( "#tv-show-" + show_id ).append('<div>Test</div>');
+    $( "#tv-show-" + show_id ).append('<div>Networks:<br />');
+    $.ajax({
+        url: '/Home/PullNetworks?showID=' + show_id,
+        dataType: 'json',
+        type: 'get',
+        cache: false,
+        success: function(data) {
+            $(data.networks).each(function(index, value) {
+            $( "#tv-show-" + show_id ).append('<input type="checkbox" class="form-check-input" checked /> ' + value.Name + ' ');
+            });
+        }
+    });
+    $( "#tv-show-" + show_id ).append('</div>');
 }
 
 $( "#accountSearchForm" ).submit(function( event ) {
@@ -136,7 +148,7 @@ $( document ).ready(function() {
         cache: false,
         success: function(data) {
             $(data.shows).each(function(index, value) {
-            $( "#showsList" ).append('<li class="list-group-item" id="tv-show-' + value.ID + '">' + value.Name +' [<a href="#" onclick="editShow(' + value.ID + ');">Edit</a>]</li>');
+            $( "#showsList" ).append('<li class="list-group-item" id="tv-show-' + value.ID + '">' + value.Name +' [<a href="#" onclick="editShow(' + value.ID + ');return false;">Edit</a>]</li>');
             });
         }
     });

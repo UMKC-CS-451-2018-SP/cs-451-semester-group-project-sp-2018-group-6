@@ -106,6 +106,31 @@ namespace CompareStream.Controllers
             return "{\"users\":" + output + "}";
         }
 
+        public string PullNetworks(int showID)
+        {
+            List<Network> networkList = new List<Network>();
+            string query = "SELECT *, '1' AS belongsTo FROM Network WHERE " + showID + " IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
+            var cmd = new SqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+            conn.Open();
+            using (SqlDataReader Reader = cmd.ExecuteReader())
+            {
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        var networkID = Reader.GetInt32(Reader.GetOrdinal("networkID"));
+                        string networkName = Reader.GetString(Reader.GetOrdinal("networkName"));
+                        Network foundNetwork = new Network(networkID, networkName);
+                        networkList.Add(foundNetwork);
+                    }
+                }
+            }
+            conn.Close();
+            string output = new JavaScriptSerializer().Serialize(networkList);
+            return "{\"networks\":" + output + "}";
+        }
+
         public string AddStreamingService()
         {
             // This is not a full page, but a function used by a form
