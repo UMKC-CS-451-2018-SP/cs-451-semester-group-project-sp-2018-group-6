@@ -70,6 +70,11 @@ function viewAccount(user_email, user_id)
     .append("<br />Favorite TV Shows:<br />");
 }
 
+function editShow(show_id)
+{
+    $( "#tv-show-" + show_id ).append('<div>Test</div>');
+}
+
 $( "#accountSearchForm" ).submit(function( event ) {
     event.preventDefault();
     var $form = $( this );
@@ -116,7 +121,7 @@ $( document ).ready(function() {
         cache: false,
         success: function(data) {
             $(data.shows).each(function(index, value) {
-            $( "#showsList" ).append('<li class="list-group-item">' + value.Name +' [<a href="#' + value.ID +'">Edit</a>]</li>');
+            $( "#showsList" ).append('<li class="list-group-item" id="tv-show-' + value.ID + '">' + value.Name +' [<a href="#" onclick="editShow(' + value.ID + ');">Edit</a>]</li>');
             });
         }
     });
