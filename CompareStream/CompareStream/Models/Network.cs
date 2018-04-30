@@ -5,11 +5,13 @@ namespace CompareStream.Models
     {
         private string _name;
         private int _id;
+        private bool _containsShow;
 
-        public Network(int id, string name)
+        public Network(int id, string name, bool containsShow)
         {
             ID = id;
             Name = name;
+            ContainsShow = containsShow;
         }
 
         public string Name
@@ -22,6 +24,12 @@ namespace CompareStream.Models
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        public bool ContainsShow
+        {
+            get { return _containsShow; }
+            set { _containsShow = value; }
         }
     }
 }
