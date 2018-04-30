@@ -95,7 +95,9 @@ function editShow(show_id)
         cache: false,
         success: function(data) {
             $(data.networks).each(function(index, value) {
-            $( "#tv-show-" + show_id ).append('<input type="checkbox" class="form-check-input" checked /> ' + value.Name + ' ');
+            var isChecked = "";
+            if (value.ContainsShow == true) isChecked = "checked";
+            $( "#tv-show-" + show_id ).append('<input type="checkbox" class="form-check-input" ' + isChecked + ' /> ' + value.Name + ' ');
             });
         }
     });
