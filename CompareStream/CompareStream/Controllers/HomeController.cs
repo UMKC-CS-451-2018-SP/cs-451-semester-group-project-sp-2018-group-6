@@ -109,7 +109,7 @@ namespace CompareStream.Controllers
         public string PullNetworks(int showID)
         {
             List<Network> networkList = new List<Network>();
-            string query = "SELECT *, '1' AS belongsTo FROM Network WHERE " + showID + " IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
+            string query = "SELECT *, CAST(1 AS bit) AS containsShow FROM Network WHERE " + showID + " IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID) UNION SELECT *, CAST(0 AS bit) AS containsShow FROM Network WHERE " + showID +" NOT IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
             var cmd = new SqlCommand(query, conn);
             cmd.CommandType = System.Data.CommandType.Text;
             conn.Open();
@@ -121,7 +121,8 @@ namespace CompareStream.Controllers
                     {
                         var networkID = Reader.GetInt32(Reader.GetOrdinal("networkID"));
                         string networkName = Reader.GetString(Reader.GetOrdinal("networkName"));
-                        Network foundNetwork = new Network(networkID, networkName);
+                        bool containsShow = Reader.GetBoolean(Reader.GetOrdinal("containsShow"));
+                        Network foundNetwork = new Network(networkID, networkName, containsShow);
                         networkList.Add(foundNetwork);
                     }
                 }
