@@ -29,6 +29,21 @@ $( "#addShowForm" ).submit(function( event ) {
     });
 });
 
+$( "#addNetworkForm" ).submit(function( event ) {
+    event.preventDefault();
+
+    var $form = $( this ),
+        name = $form.find( "input[name='networkName']" ).val(),
+        url = $form.attr( "action" );
+
+    var posting = $.post( url, { networkName: name } );
+
+    posting.done(function( data ) {
+        var content = $( data ).filter( "#content" );
+        $( "#result" ).empty().append( content );
+    });
+});
+
 $( "#reportProblemForm" ).submit(function( event ) {
     event.preventDefault();
 
