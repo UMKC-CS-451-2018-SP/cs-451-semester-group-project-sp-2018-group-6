@@ -369,6 +369,7 @@ namespace CompareStream.Controllers
         public string EditNetworkShow(int networkID, int showID, bool containsShow)
         {
             int affectedRows = 0;
+            string returnText;
 
             if (containsShow == false)
             {
@@ -397,9 +398,15 @@ namespace CompareStream.Controllers
 
                 }
 
+                SqlCommand getNetworkNamecmd = new SqlCommand("SELECT networkName FROM Network WHERE networkID = " + networkID, conn);
+                string networkName2 = Convert.ToString(getNetworkNamecmd.ExecuteScalar());
+
+                SqlCommand getShowNamecmd = new SqlCommand("SELECT showName FROM Shows WHERE showID = " + showID, conn);
+                string showName2 = Convert.ToString(getShowNamecmd.ExecuteScalar());
+
                 conn.Close();
 
-                if (affectedRows == 1) return "Success!";
+                if (affectedRows == 1) return "Successfully added " + showName2 +" to " + networkName2 + "!";
                 return "Could not add TV Show to Network";
             }
 
@@ -428,9 +435,15 @@ namespace CompareStream.Controllers
 
             }
 
+            SqlCommand getNetworkNamecmd2 = new SqlCommand("SELECT networkName FROM Network WHERE networkID = " + networkID, conn);
+            string networkName = Convert.ToString(getNetworkNamecmd2.ExecuteScalar());
+
+            SqlCommand getShowNamecmd2 = new SqlCommand("SELECT showName FROM Shows WHERE showID = " + showID, conn);
+            string showName = Convert.ToString(getShowNamecmd2.ExecuteScalar());
+
             conn.Close();
 
-            if (affectedRows > 0) return "Success!";
+            if (affectedRows > 0) return "Successfully removed " + showName + " from " + networkName + "!";
             return "Failure to remove tv show from network";
         }
 
