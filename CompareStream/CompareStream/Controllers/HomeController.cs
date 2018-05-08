@@ -84,8 +84,10 @@ namespace CompareStream.Controllers
         public string SearchUsers(string email)
         {
             List<User> userList = new List<User>();
-            string query = "SELECT userID, email FROM Users WHERE email LIKE '%" + email + "%';";
+            string query = "SELECT userID, email FROM Users WHERE email LIKE '%'+@email+'%';";
             var cmd = new SqlCommand(query, conn);
+			cmd.Parameters.Add("@email", System.Data.SqlDbType.NVarChar, 20);
+			cmd.Parameters["@email"].Value = email;
             cmd.CommandType = System.Data.CommandType.Text;
             conn.Open();
             using (SqlDataReader Reader = cmd.ExecuteReader())
@@ -369,7 +371,6 @@ namespace CompareStream.Controllers
         public string EditNetworkShow(int networkID, int showID, bool containsShow)
         {
             int affectedRows = 0;
-            string returnText;
 
             if (containsShow == false)
             {
