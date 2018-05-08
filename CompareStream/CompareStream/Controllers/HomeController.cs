@@ -111,8 +111,10 @@ namespace CompareStream.Controllers
         public string PullNetworks(int showID)
         {
             List<Network> networkList = new List<Network>();
-            string query = "SELECT *, CAST(1 AS bit) AS containsShow FROM Network WHERE " + showID + " IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID) UNION SELECT *, CAST(0 AS bit) AS containsShow FROM Network WHERE " + showID +" NOT IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
+            string query = "SELECT *, CAST(1 AS bit) AS containsShow FROM Network WHERE @showID IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID) UNION SELECT *, CAST(0 AS bit) AS containsShow FROM Network WHERE @showID NOT IN (SELECT showID FROM NetworkShow WHERE Network.networkID = NetworkShow.networkID);";
             var cmd = new SqlCommand(query, conn);
+            cmd.Parameters.Add("@showID", System.Data.SqlDbType.Int, 5);
+            cmd.Parameters["@showID"].Value = showID;
             cmd.CommandType = System.Data.CommandType.Text;
             conn.Open();
             using (SqlDataReader Reader = cmd.ExecuteReader())
