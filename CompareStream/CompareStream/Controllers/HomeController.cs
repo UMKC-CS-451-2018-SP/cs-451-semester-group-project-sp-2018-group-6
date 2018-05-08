@@ -319,8 +319,10 @@ namespace CompareStream.Controllers
         public string BrowseReports(int offset)
         {
             List<Report> reportList = new List<Report>();
-            string query = "SELECT * FROM Report ORDER BY reportID DESC OFFSET " + offset + " ROWS FETCH NEXT 5 ROWS ONLY;";
+            string query = "SELECT * FROM Report ORDER BY reportID DESC OFFSET @offset ROWS FETCH NEXT 5 ROWS ONLY;";
             var cmd = new SqlCommand(query, conn);
+            cmd.Parameters.Add("@offset", System.Data.SqlDbType.Int, 5);
+            cmd.Parameters["@offset"].Value = offset;
             cmd.CommandType = System.Data.CommandType.Text;
             conn.Open();
             using (SqlDataReader Reader = cmd.ExecuteReader())
